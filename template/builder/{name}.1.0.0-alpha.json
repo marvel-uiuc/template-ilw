@@ -1,0 +1,41 @@
+{
+    "title": "<%= _.startCase(name.slice(4)) %>",
+    "tag": "<%= name %>",
+    "github": "https://github.com/web-illinois/<%= name %>/",
+    "type": "web component",
+    "element-name": "<%= name %>",
+    "description": "Description for builder.",
+    "version": "1.0.0-alpha",
+    "date": "<%= month %>/<%= day %>/<%= year %>",
+    "css": "https://dev.toolkit.illinois.edu/<%= name %>/1.0.0-alpha/<%= name %>.css",
+    "js": "https://dev.toolkit.illinois.edu/<%= name %>/1.0.0-alpha/<%= name %>.js",
+    "production": false,
+    "notes": "",
+    "parent-style": "",
+    "samples": [
+        {
+            "name": "default",
+            "description": "Default information",
+            "text": "<p>Lorem ipsum</p>"
+        }
+    ],
+    "attributes-fixed": [],
+    "attributes-text": [],
+    "attributes": [
+        {
+            "name": "theme",
+            "description": "Color theme used",
+            "depreciated": false,
+            "values": [
+                "",
+                "blue",
+                "orange",
+                "white"
+            ]
+        }
+    ],
+    "classes-fixed": [],
+    "classes": [],
+    "css-variables": [
+    ]
+}
