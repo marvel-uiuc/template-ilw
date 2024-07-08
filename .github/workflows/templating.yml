@@ -1,0 +1,30 @@
+name: Apply caz templating
+
+on: [push]
+
+jobs:
+  run-caz:
+    # Avoid running in the host repo
+    if: ${{ github.repository != 'marvel-uiuc/template-ilw' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Apply caz template
+        run: npx -y caz ./ output --name ${{ github.event.repository.name }} --repository ${{ github.repository }}
+      - name: Commit template changes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          rm -rf .github template index.js .gitignore package-lock.json
+          (shopt -s dotglob; mv output/* .)
+          rm -rf output
+          git commit -a -m "chore: init template"
+          git push --force
