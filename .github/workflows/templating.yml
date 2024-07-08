@@ -4,12 +4,11 @@ on: [push]
 
 jobs:
   run-caz:
-    # Avoid running in the host repo
-    if: ${{ github.repository != 'marvel-uiuc/template-ilw' }}
+    # Avoid running more than once
+    if: ${{ github.repository != 'marvel-uiuc/template-ilw' && '[ -d "template" ]' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      actions: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -24,7 +23,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          rm -rf .github template index.js .gitignore package-lock.json
+          rm -rf template index.js .gitignore package-lock.json
           cp -rT output .
           rm -rf output
           git add -A

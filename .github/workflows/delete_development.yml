@@ -2,7 +2,7 @@ name: delete_development
 on:
   workflow_dispatch:
 env:
-  COMPONENT_NAME: '<%= name %>'   # set this to the web component name you are using
+  COMPONENT_NAME: ${{ github.event.repository.name }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -10,10 +10,10 @@ jobs:
     - name: Configure AWS Credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        aws-access-key-id: <%= "${{ vars.TOOLKIT_AWS_ACCESS_KEY }}" %>
-        aws-secret-access-key: <%= "${{ secrets.TOOLKIT_AWS_ACCESS_SECRET }}" %>
+        aws-access-key-id: ${{ vars.TOOLKIT_AWS_ACCESS_KEY }}
+        aws-secret-access-key: ${{ secrets.TOOLKIT_AWS_ACCESS_SECRET }}
         aws-region: us-east-2
     - name: Delete S3 bucket
       run: aws s3 rm s3://dev.toolkit.illinois.edu/content/$COMPONENT_NAME --recursive
     - name: Invalidate Cloudfront cache
-      run: aws cloudfront create-invalidation --distribution-id <%= "${{ vars.TOOLKIT_AWS_CLOUDFRONT_DEV }}" %> --paths "/$COMPONENT_NAME*"
+      run: aws cloudfront create-invalidation --distribution-id ${{ vars.TOOLKIT_AWS_CLOUDFRONT_DEV }} --paths "/$COMPONENT_NAME*"
