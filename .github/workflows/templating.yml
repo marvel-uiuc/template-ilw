@@ -24,7 +24,8 @@ jobs:
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
           rm -rf .github template index.js .gitignore package-lock.json
-          (shopt -s dotglob; mv output/* .)
+          mv output/{.*,*} ./
           rm -rf output
+          git add -A
           git commit -a -m "chore: init template"
           git push --force
