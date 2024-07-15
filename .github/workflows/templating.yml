@@ -23,7 +23,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
-          rm -rf template index.js .gitignore package-lock.json
+          rm -rf template index.js .gitignore package-lock.json README.md
           cp -rT output .
           rm -rf output
           git add -A
