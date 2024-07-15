@@ -23,7 +23,7 @@ jobs:
       env: 
         GITHUB_BRANCH: ${{ github.event.inputs.version }}
     - name: Display version install
-      run: echo "Installing dev version ${VERSION}"
+      run: echo "Installing production version ${VERSION}"
 
     - run: npm install
     - run: npm rebuild
