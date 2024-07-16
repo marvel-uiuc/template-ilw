@@ -5,7 +5,7 @@ on: [push]
 jobs:
   run-caz:
     # Avoid running more than once
-    if: ${{ github.repository != 'web-illinois/toolkit-template' && github.repository != 'marvel-uiuc/template-ilw' && '[ -d "template" ]' }}
+    if: ${{ github.repository != 'web-illinois/toolkit-template' && github.repository != 'marvel-uiuc/template-ilw' && hashFiles('template/package.json') != '' }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
