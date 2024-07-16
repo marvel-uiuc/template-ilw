@@ -1,12 +1,11 @@
 name: Apply caz templating
 
-on:
-  create
+on: [push]
 
 jobs:
   run-caz:
     # Avoid running more than once
-    if: ${{ github.event.ref == github.event.master_branch }}
+    if: ${{ github.repository != 'web-illinois/toolkit-template' && github.repository != 'marvel-uiuc/template-ilw' && github.run_number == 1 }}
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -14,7 +13,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: ${{ github.ref }}
+          ref: ${{ github.head_ref }}
       - uses: actions/setup-node@v4
         with:
           node-version: 20
