@@ -3,6 +3,7 @@
     "description": "One paragraph description of the component.",
     "repository": "github:<%= repository %>",
     "private": false,
+    "license": "MIT",
     "version": "0.0.1",
     "type": "module",
     "exports": {
