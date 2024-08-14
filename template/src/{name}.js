@@ -16,10 +16,6 @@ class <%= _.upperFirst(_.camelCase(name.slice(4))) %> extends LitElement {
 
     constructor() {
         super();
-        this.align = '';
-        this.focus = '';
-        this.shadow = false;
-        this.collapse = false;
         this.theme = '';
     }
 
