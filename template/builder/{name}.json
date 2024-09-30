@@ -5,6 +5,7 @@
     "type": "web component",
     "element-name": "<%= name %>",
     "description": "Description for builder.",
+    "purpose": "Imperative mood purpose for builder homepage.",
     "toolkit-version": "",
     "production-version": "",
     "development-version": "1.0.0-alpha"
