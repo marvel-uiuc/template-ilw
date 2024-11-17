@@ -1,0 +1,9 @@
+/* Styleable variables are in the base layer so they can be overridden easily */
+@layer base {
+    :host {
+
+    }
+}
+
+:host {
+}

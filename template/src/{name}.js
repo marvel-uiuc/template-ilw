@@ -1,5 +1,5 @@
-import { LitElement, html } from 'lit';
-import styles from './<%= name %>.styles';
+import { LitElement, html, unsafeCSS } from "lit";
+import styles from './<%= name %>.styles.css?inline';
 import './<%= name %>.css';
 
 class <%= _.upperFirst(_.camelCase(name.slice(4))) %> extends LitElement {
@@ -11,7 +11,7 @@ class <%= _.upperFirst(_.camelCase(name.slice(4))) %> extends LitElement {
     }
 
     static get styles() {
-        return styles;
+        return unsafeCSS(styles);
     }
 
     constructor() {
@@ -21,10 +21,10 @@ class <%= _.upperFirst(_.camelCase(name.slice(4))) %> extends LitElement {
 
     render() {
         return html`
-      <div>
-          <slot></slot>
-      </div>
-    `;
+            <div>
+                <slot></slot>
+            </div>
+        `;
     }
 }
 
