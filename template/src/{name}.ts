@@ -1,14 +1,14 @@
 import { LitElement, html, unsafeCSS } from "lit";
+// @ts-ignore
 import styles from './<%= name %>.styles.css?inline';
 import './<%= name %>.css';
+import { customElement, property } from "lit/decorators.js";
 
-class <%= _.upperFirst(_.camelCase(name.slice(4))) %> extends LitElement {
+@customElement("<%= name %>")
+export default class <%= _.upperFirst(_.camelCase(name.slice(4))) %> extends LitElement {
 
-    static get properties() {
-        return {
-            theme: { type: String, attribute: true }
-        };
-    }
+    @property()
+    theme = "";
 
     static get styles() {
         return unsafeCSS(styles);
@@ -16,7 +16,6 @@ class <%= _.upperFirst(_.camelCase(name.slice(4))) %> extends LitElement {
 
     constructor() {
         super();
-        this.theme = '';
     }
 
     render() {
@@ -28,4 +27,8 @@ class <%= _.upperFirst(_.camelCase(name.slice(4))) %> extends LitElement {
     }
 }
 
-customElements.define('<%= name %>', <%= _.upperFirst(_.camelCase(name.slice(4))) %>);
+declare global {
+    interface HTMLElementTagNameMap {
+        "<%= name %>": <%= _.upperFirst(_.camelCase(name.slice(4))) %>;
+    }
+}

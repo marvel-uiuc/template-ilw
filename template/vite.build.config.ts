@@ -4,17 +4,18 @@ import { defineConfig } from "vite";
 export default defineConfig({
     root: "src",
     build: {
-        outDir: "../dist",
+        outDir: "../dist/cdn",
         lib: {
             name: "<%= name %>",
-            entry: "<%= name %>.js",
+            entry: "<%= name %>.ts",
             fileName: "<%= name %>",
-            formats: ["es", "cjs", "umd"],
+            formats: ["es"],
         },
         rollupOptions: {
             output: {
                 assetFileNames: (chunkInfo) => {
                     if (chunkInfo.name === "style.css") return "<%= name %>.css";
+                    return "assets/[name]-[hash][extname]"; // vite default
                 },
             },
         },
