@@ -5,6 +5,7 @@
     "type": "web component",
     "element-name": "<%= name %>",
     "description": "Description for builder.",
+    "builder-version": "1.0-alpha",
     "version": "1.0.0-alpha",
     "date": "<%= month %>/<%= day %>/<%= year %>",
     "css": "https://dev.toolkit.illinois.edu/<%= name %>/1.0.0-alpha/<%= name %>.css",

@@ -33,6 +33,6 @@ jobs:
           aws-region: us-east-2
 
       - name: Deploy toolbox to S3 bucket for version
-        run: aws s3 sync ./dist/ s3://cdn.toolkit.illinois.edu/content/$COMPONENT_NAME/$VERSION --delete --acl bucket-owner-full-control
+        run: aws s3 sync ./dist/cdn/ s3://cdn.toolkit.illinois.edu/content/$COMPONENT_NAME/$VERSION --delete --acl bucket-owner-full-control
       - name: Invalidate Cloudfront cache for version
         run: aws cloudfront create-invalidation --distribution-id ${{ vars.TOOLKIT_AWS_CLOUDFRONT }} --paths "/$COMPONENT_NAME/$VERSION*"
