@@ -13,9 +13,8 @@ export default defineConfig({
         },
         rollupOptions: {
             output: {
-                assetFileNames: (chunkInfo) => {
-                    if (chunkInfo.name === "style.css") return "<%= name %>.css";
-                    return "assets/[name]-[hash][extname]"; // vite default
+                assetFileNames: () => {
+                    return "[name][extname]";
                 },
             },
         },
