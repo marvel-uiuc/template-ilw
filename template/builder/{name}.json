@@ -1,9 +1,9 @@
 {
-    "title": "Late Ilw Typescript",
-    "tag": "template-ilw-typescript",
-    "github": "https://github.com/web-illinois/template-ilw-typescript/",
+    "title": "<%= _.startCase(name.slice(4)) %>",
+    "tag": "<%= name %>",
+    "github": "https://github.com/web-illinois/<%= name %>/",
     "type": "web component",
-    "element-name": "template-ilw-typescript",
+    "element-name": "<%= name %>",
     "description": "Description for builder.",
     "purpose": "Imperative mood purpose for builder homepage.",
     "toolkit-version": "",

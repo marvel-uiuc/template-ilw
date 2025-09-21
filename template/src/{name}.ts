@@ -1,11 +1,11 @@
 import { LitElement, html, unsafeCSS } from "lit";
 // @ts-ignore
-import styles from './template-ilw-typescript.styles.css?inline';
-import './template-ilw-typescript.css';
+import styles from './<%= name %>.styles.css?inline';
+import './<%= name %>.css';
 import { customElement, property } from "lit/decorators.js";
 
-@customElement("template-ilw-typescript")
-export default class LateIlwTypescript extends LitElement {
+@customElement("<%= name %>")
+export default class <%= _.upperFirst(_.camelCase(name.slice(4))) %> extends LitElement {
 
     @property()
     theme = "";
@@ -29,6 +29,6 @@ export default class LateIlwTypescript extends LitElement {
 
 declare global {
     interface HTMLElementTagNameMap {
-        "template-ilw-typescript": LateIlwTypescript;
+        "<%= name %>": <%= _.upperFirst(_.camelCase(name.slice(4))) %>;
     }
 }
