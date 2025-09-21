@@ -54,6 +54,12 @@ jobs:
       - run: npm install
       - run: npm rebuild
       - run: npm run-script build
+
+      # Run this to get the axe report
+      # This only uses Chrome, so it doesn't have to run the full Playwright install
+      - name: Run axe-core tests
+        run: npm run test:axe:github
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -91,3 +97,20 @@ jobs:
       - name: Invalidate Cloudfront cache for latest dev
         if: ${{ steps.get_version.outputs.prerelease != '' }}
         run: aws cloudfront create-invalidation --distribution-id ${{ vars.TOOLKIT_AWS_CLOUDFRONT_DEV }} --paths "/$COMPONENT_NAME/latest*"
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout GitHub Action'
+        uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.x'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Install dependencies
+        run: npm ci
+      - name: Install to npm
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.TOOLKIT_NPM_SECRET}}
