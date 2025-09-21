@@ -1,7 +1,7 @@
 {
-    "name": "@illinois-toolkit/template-ilw-typescript",
+    "name": "@illinois-toolkit/<%= name %>",
     "description": "One paragraph description of the component.",
-    "repository": "github:web-illinois/template-ilw-typescript",
+    "repository": "github:<%= repository %>",
     "private": false,
     "license": "MIT",
     "version": "0.0.1",
@@ -13,16 +13,16 @@
     ],
     "exports": {
         ".": {
-            "import": "./dist/template-ilw-typescript.js",
-            "require": "./dist/template-ilw-typescript.cjs",
-            "default": "./dist/template-ilw-typescript.js"
+            "import": "./dist/<%= name %>.js",
+            "require": "./dist/<%= name %>.cjs",
+            "default": "./dist/<%= name %>.js"
         },
-        "./template-ilw-typescript.css": {
-            "import": "./dist/template-ilw-typescript.css"
+        "./<%= name %>.css": {
+            "import": "./dist/<%= name %>.css"
         }
     },
-    "main": "./dist/template-ilw-typescript.js",
-    "module": "./dist/template-ilw-typescript.js",
+    "main": "./dist/<%= name %>.js",
+    "module": "./dist/<%= name %>.js",
     "scripts": {
         "dev": "vite",
         "build": "tsc --noEmit && vite build --config vite.transpile.config.ts --emptyOutDir && vite build --config vite.build.config.ts --emptyOutDir",
