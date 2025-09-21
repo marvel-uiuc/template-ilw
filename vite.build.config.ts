@@ -6,9 +6,9 @@ export default defineConfig({
     build: {
         outDir: "../dist/cdn",
         lib: {
-            name: "<%= name %>",
-            entry: "<%= name %>.ts",
-            fileName: "<%= name %>",
+            name: "template-ilw-typescript",
+            entry: "template-ilw-typescript.ts",
+            fileName: "template-ilw-typescript",
             formats: ["es"],
         },
         rollupOptions: {
