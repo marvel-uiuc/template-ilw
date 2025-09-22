@@ -8,10 +8,11 @@ import baseConfig from './playwright.base.config';
 export default defineConfig(baseConfig, {
     projects: [
         {
-            name: "Firefox",
+            name: 'chromium',
             use: {
-                ...devices["Desktop Firefox"],
-                channel: "firefox",
+                ...devices['Desktop Chrome'],
+                // GitHub Actions have chrome pre-installed, so we use that channel
+                channel: 'chrome',
             },
         },
     ],
