@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
 jobs:
   test:
-    if: ${{ github.repository != 'web-illinois/toolkit-template' && github.repository != 'mwarvel-uiuc/template-il' && github.repository != 'web-illinois/template-ilw-typescript' }}
+    if: ${{ github.repository != 'web-illinois/toolkit-template' && github.repository != 'marvel-uiuc/template-ilw' && github.repository != 'web-illinois/template-ilw-typescript' }}
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
